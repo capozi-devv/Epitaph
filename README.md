@@ -1,8 +1,8 @@
-# Introduction
+# Epitaph
 Allows you to customize your own death messages for others to see! You can customize each death message individually, and you can make them _**Anything!**_
 
 
-# Instructions
+## Instructions
 In your config folder, find the ```epitaph``` folder. If it does not exist, create it. Then, with this folder create a ```death_messages``` folder if it does not already exist. Within ```death_messages```, create a ```.json``` file withe the name format of ```<your_uuid_here>.json```, replacing "<your_uuid_here>" with your Minecraft account's uuid. If you do not know your own uuid, you can check [here](https://namemc.com/) by searching your minecraft username. Once your file is named, you can go into it and start replacing the values of the normal minecraft death messages. You can find an template json structure below.
 
 ```
