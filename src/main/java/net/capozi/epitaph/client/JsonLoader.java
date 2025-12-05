@@ -11,16 +11,13 @@ import java.io.FileWriter;
 import java.util.UUID;
 
 public class JsonLoader {
-    private static final Gson GSON = new Gson();
+    protected static final Gson GSON = new Gson();
     // Reads this client's own file and returns it.
     public static JsonObject loadClientKeys() {
         UUID uuid = MinecraftClient.getInstance().getSession().getUuidOrNull();
         if (uuid == null) return new JsonObject();
         // Path: config/epitaph/death_messages/<uuid>.json
-        File file = new File(
-                FabricLoader.getInstance().getConfigDir().toFile(),
-                "epitaph/death_messages/" + uuid + ".json"
-        );
+        File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), "epitaph/death_messages/" + uuid + ".json");
         if (!file.exists()) {
             // create file if missing
             file.getParentFile().mkdirs();

@@ -3,16 +3,13 @@
   "id": "epitaph",
   "version": "${version}",
   "name": "Epitaph",
-  "description": "",
-  "authors": [],
+  "description": "Note Added: See you in hell asshole",
+  "authors": ["Capozi"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/epitaph/icon.png",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "net.capozi.epitaph.EpitaphDataGenerator"
-    ],
     "client": [
       "net.capozi.epitaph.EpitaphClient"
     ],
