@@ -27,6 +27,8 @@ public class DamageSourceMixin {
             if (key != null) {
                 Text text = Text.literal(playerKeys.get(key.toString()).toString());
                 cir.setReturnValue(text);
+            } else {
+
             }
         }
     }
