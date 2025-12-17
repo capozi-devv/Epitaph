@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DamageSource.class)
 public class DamageSourceMixin {
-    @Inject(method = "getDeathMessage", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getDeathMessage", at = @At("HEAD"), cancellable = true)
     private void customizeVictimDeathMessage(LivingEntity killed, CallbackInfoReturnable<Text> cir) {
         if (!(killed instanceof ServerPlayerEntity player)) return;
         DamageSource source = (DamageSource)(Object)this;
@@ -27,8 +27,6 @@ public class DamageSourceMixin {
             if (key != null) {
                 Text text = Text.literal(playerKeys.get(key.toString()).toString());
                 cir.setReturnValue(text);
-            } else {
-
             }
         }
     }
