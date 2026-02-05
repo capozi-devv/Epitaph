@@ -3,6 +3,8 @@ package net.capozi.epitaph;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
@@ -25,8 +27,7 @@ public class Epitaph implements ModInitializer {
     @Override
     public void onInitialize() {
         ServerPlayNetworking.registerGlobalReceiver(
-                EpitaphClient.SEND_PLAYER_KEYS,
-                (server, player, handler, buf, responseSender) -> {
+                EpitaphClient.SEND_PLAYER_KEYS, (server, player, handler, buf, responseSender) -> {
                     String jsonText = buf.readString();
                     JsonObject json = GSON.fromJson(jsonText, JsonObject.class);
                     server.execute(() -> {

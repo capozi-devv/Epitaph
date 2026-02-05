@@ -13,6 +13,17 @@ public class EpitaphClient implements ClientModInitializer {
     public static final Identifier SEND_PLAYER_KEYS = new Identifier("epitaph", "send_player_keys");
     @Override
     public void onInitializeClient() {
-
+        ClientPlayConnectionEvents.INIT.register((handler, sender) -> {
+            JsonObject json = JsonLoader.loadClientKeys();
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeString(json.toString()); // send full JSON text
+            ClientPlayNetworking.send(SEND_PLAYER_KEYS, buf);
+        });
+        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
+            JsonObject json = JsonLoader.loadClientKeys();
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeString(json.toString()); // send full JSON text
+            ClientPlayNetworking.send(SEND_PLAYER_KEYS, buf);
+        });
     }
 }
