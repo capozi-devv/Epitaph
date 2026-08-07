@@ -19,6 +19,13 @@ fabricApi {
 
 repositories {
     maven {url = "https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple"}
+    maven {
+        name "Modrinth"
+        url "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -30,6 +37,7 @@ dependencies {
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     include("com.googlecode.json-simple:json-simple:1.1.1")
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
 }
 
 processResources {
